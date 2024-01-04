@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Score } from './score.entity';
 
 @Entity()
 export class Student {
@@ -12,4 +13,7 @@ export class Student {
 
   @Column()
   age!: number;
+
+  @OneToMany(() => Score, (score) => score.student)
+  score: Score[]
 }
